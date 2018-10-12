@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="ueberschrift">Überschrift der Seite (Daten neu)....</entry>
+    <entry key="titelLabel">Attribute :</entry>
+    <entry key="singerLabel">Attribute :</entry>
+    <entry key="speichernText">Speichern</entry>
+    <entry key="zurueckText">Zurück</entry>
+</properties>

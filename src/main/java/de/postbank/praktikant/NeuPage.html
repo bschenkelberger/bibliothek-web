@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+<title>Apache Wicket Quickstart</title>
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
+</head>
+<body>
+  <div id="hd">
+    <div id="logo">
+      <img src="logo.png" width="50px" height="50px" alt="Wicket Logo" />
+      <h1>Apache Wicket</h1>
+    </div>
+  </div>
+  <div id="bd">
+    <form wicket:id="form" class="form-cn">
+      <div class="form-hd size-full"/>
+      <div class="form-bd size-full">
+        <fieldset>
+          <legend>
+            <h3>
+              <wicket:message key="ueberschrift">Überschrift der Seite (Neuer Datensatz)</wicket:message>
+            </h3>
+          </legend>
+          <div>
+            <wicket:message key="titelLabel">Neuer Titel</wicket:message>
+            <input wicket:id="titel" />
+          </div>
+          <br />
+          <div>
+            <wicket:message key="singerLabel">Neuer Sänger</wicket:message>
+            <input wicket:id="singer" />
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-ft size-full" align="center">
+        <button wicket:id="speichern" class="type-submit" type="submit">Speichern</button>
+        <button wicket:id="zurueck" class="type-submit" type="submit">Übersicht</button>
+      </div>
+    </form>
+  </div>
+  <div id="ft" />
+</body>
+</html>

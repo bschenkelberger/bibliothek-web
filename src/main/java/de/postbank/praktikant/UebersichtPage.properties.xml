@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="titel">Online - Bibliothek</entry>
+    <entry key="seitenUberschrift">Allgemeiner Text, als Überschrift</entry>
+    <entry key="header_1">Header 1</entry>
+    <entry key="header_2">Header 2</entry>
+    <entry key="aenderLinkLabel">Ändern</entry>
+    <entry key="loeschenLinkLabel">Löschen</entry>
+    <entry key="hinzufuegenButtonLabel">Hinzufügen</entry>
+</properties>
