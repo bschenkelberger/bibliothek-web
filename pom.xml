@@ -47,7 +47,7 @@
 		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
-		<wtp.version>none</wtp.version>
+		<wtp.version>2.0</wtp.version>
 	</properties>
 	<dependencies>
 		<!--  WICKET DEPENDENCIES -->
