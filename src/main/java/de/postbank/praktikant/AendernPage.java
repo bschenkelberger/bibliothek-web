@@ -23,23 +23,24 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.postbank.praktikant.restpojo.BookEntity;
 import de.postbank.praktikant.restpojo.Track;
 
 public class AendernPage extends WebPage {
 
-    public AendernPage(IModel<Track> model) {
+    public AendernPage(IModel<BookEntity> model) {
         super(model);
 
-        Form<Track> form = new Form<Track>("form", model);
+        Form<BookEntity> form = new Form<BookEntity>("form", model);
         add(form);
-        form.add(new TextField<String>("titel", new PropertyModel<String>(getDefaultModel(), "title")));
-        form.add(new TextField<String>("singer", new PropertyModel<String>(getDefaultModel(), "singer")));
-        form.add(new DateTextField("datum", new PropertyModel<Date>(getDefaultModel(), "datum"), "dd.MM.yyyy"));
+        form.add(new TextField<String>("titel", new PropertyModel<String>(getDefaultModel(), "name")));
+//        form.add(new TextField<String>("singer", new PropertyModel<String>(getDefaultModel(), "singer")));
+//        form.add(new DateTextField("datum", new PropertyModel<Date>(getDefaultModel(), "datum"), "dd.MM.yyyy"));
         form.add(new Button("speichern", new ResourceModel("speichernText")) {
             @Override
             public void onSubmit() {
                 super.onSubmit();
-                addVideo((Track) AendernPage.this.getDefaultModelObject());
+                addVideo();
                 setResponsePage(new UebersichtPage(new PageParameters()));
             }
         });
@@ -53,24 +54,24 @@ public class AendernPage extends WebPage {
         }.setDefaultFormProcessing(false));
     }
 
-    private void addVideo(Track track) {
-
+    private void addVideo() {
+    	BookEntity entity = (BookEntity)this.getDefaultModelObject();
         try {
             //Als Url muss der Endpunk von deinem Service eingetragen werden
-            URL url = new URL("http://localhost:8090/xxxx/rest/json/video/post");
+            URL url = new URL("http://localhost:8081/bibliothek/api/books");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("PUT");
             conn.setRequestProperty("Content-Type", "application/json");
 
             ObjectMapper mapper = new ObjectMapper();
-            String jasonTrackString = mapper.writeValueAsString(track);
+            String jasonTrackString = mapper.writeValueAsString(entity);
 
             OutputStream os = conn.getOutputStream();
             os.write(jasonTrackString.getBytes());
             os.flush();
 
-            if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 throw new WicketRuntimeException("Failed : HTTP error code: " + conn.getResponseCode());
             }
 

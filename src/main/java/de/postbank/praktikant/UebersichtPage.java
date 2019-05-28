@@ -68,7 +68,7 @@ public class UebersichtPage extends WebPage {
 
 		@Override
 		protected void onClick(AjaxRequestTarget target, IModel<BookEntity> rowModel) {
-			//setResponsePage(new AendernPage(rowModel));
+			setResponsePage(new AendernPage(rowModel));
 		}
 	}
 
