@@ -8,10 +8,12 @@ import java.net.URL;
 
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -29,7 +31,9 @@ public class AendernPage extends WebPage {
 		add(form);
 		form.add(new TextField<String>("titel", new PropertyModel<String>(getDefaultModel(), "name")));
 		// TODO Hier muss noch das Dropdown für Genre hin
+		form.add(new Label("genre", new PropertyModel<String>(getDefaultModel(), "genre.name")));
 		// TODO Hier muss noch das Dropdown für Source hin
+		form.add(new Label("source", new PropertyModel<String>(getDefaultModel(), "source.name")));
 
 		form.add(new Button("speichern", new ResourceModel("speichernText")) {
 			@Override

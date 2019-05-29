@@ -19,7 +19,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import de.postbank.praktikant.model.BooksModel;
 import de.postbank.praktikant.response.BooksResponse;
 import de.postbank.praktikant.restpojo.BookEntity;
-import de.postbank.praktikant.restpojo.Track;
 import de.postbank.praktikant.wicket.GenericTabelleDataProvider;
 import de.postbank.praktikant.wicket.LinkColumn;
 
@@ -36,9 +35,11 @@ public class UebersichtPage extends WebPage {
 			}
 
 		};
-		ISortableDataProvider<BookEntity, String> dataProvider = new GenericTabelleDataProvider(recContListModel, "name", true);
+		ISortableDataProvider<BookEntity, String> dataProvider = new GenericTabelleDataProvider(recContListModel,
+				"name", true);
 
-		final DataTable<BookEntity, String> table = new DataTable<BookEntity, String>("repeater", getColumns(), dataProvider, Integer.MAX_VALUE);
+		final DataTable<BookEntity, String> table = new DataTable<BookEntity, String>("repeater", getColumns(),
+				dataProvider, Integer.MAX_VALUE);
 		table.addTopToolbar(new HeadersToolbar(table, null));
 		add(table);
 		add(new Link("hinzufuegen", new ResourceModel("hinzufuegenButtonLabel")) {

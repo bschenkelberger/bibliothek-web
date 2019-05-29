@@ -3,9 +3,9 @@
 <properties>
     <entry key="titel">Online - Bibliothek</entry>
     <entry key="seitenUberschrift">Allgemeiner Text, als Überschrift</entry>
-    <entry key="header_1">Header 1</entry>
-    <entry key="header_2">Header 2</entry>
-    <entry key="aenderLinkLabel">Ändern</entry>
-    <entry key="loeschenLinkLabel">Löschen</entry>
-    <entry key="hinzufuegenButtonLabel">Hinzufügen</entry>
+    <entry key="header_1">Buch Titel</entry>
+    <entry key="header_2">Genre</entry>
+    <entry key="aenderLinkLabel">aendern</entry>
+    <entry key="loeschenLinkLabel">loeschen</entry>
+    <entry key="hinzufuegenButtonLabel">neu</entry>
 </properties>
