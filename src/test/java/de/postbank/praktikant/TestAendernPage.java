@@ -5,7 +5,7 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.postbank.praktikant.restpojo.Track;
+import de.postbank.praktikant.restpojo.BookEntity;
 
 public class TestAendernPage {
     
@@ -19,7 +19,7 @@ public class TestAendernPage {
     @Test
     public void homepageRendersSuccessfully() {
         // start and render the test page
-        tester.startPage(new AendernPage(new Model<Track>(new Track())));
+        tester.startPage(new AendernPage(new Model<BookEntity>(new BookEntity())));
 
         // assert rendered page class
         tester.assertRenderedPage(AendernPage.class);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="ueberschrift">Überschrift der Seite (Daten ändern)....</entry>
+    <entry key="ueberschrift">Überschrift der Seite (Buch löschen)....</entry>
     <entry key="titelLabel">Titel:</entry>
     <entry key="genreLabel">Genre:</entry>
     <entry key="sourceLabel">Source:</entry>
-    <entry key="speichernText">Daten speichern</entry>
+    <entry key="loeschenText">Löschen</entry>
     <entry key="zurueckText">Übersicht</entry>
     
 </properties>

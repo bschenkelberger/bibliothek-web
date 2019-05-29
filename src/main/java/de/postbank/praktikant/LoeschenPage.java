@@ -8,35 +8,35 @@ import java.net.URL;
 
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.postbank.praktikant.restpojo.BookEntity;
 
-public class AendernPage extends WebPage {
+public class LoeschenPage extends WebPage {
 
-	public AendernPage(IModel<BookEntity> model) {
+	public LoeschenPage(IModel<BookEntity> model) {
 		super(model);
 
 		Form<BookEntity> form = new Form<BookEntity>("form", model);
 		add(form);
-		form.add(new TextField<String>("titel", new PropertyModel<String>(getDefaultModel(), "name")));
-		// TODO Hier muss noch das Dropdown für Genre hin
-		// TODO Hier muss noch das Dropdown für Source hin
 
-		form.add(new Button("speichern", new ResourceModel("speichernText")) {
+		form.add(new Label("titel", new PropertyModel<String>(getDefaultModel(), "name")));
+		form.add(new Label("genre", new PropertyModel<String>(getDefaultModel(), "genre.name")));
+		form.add(new Label("source", new PropertyModel<String>(getDefaultModel(), "source.name")));
+
+		form.add(new Button("loeschen", new ResourceModel("loeschenText")) {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				addVideo();
-				setResponsePage(new UebersichtPage(new PageParameters()));
+				deleteBock();
+				setResponsePage(UebersichtPage.class);
 			}
 		});
 
@@ -49,14 +49,18 @@ public class AendernPage extends WebPage {
 		}.setDefaultFormProcessing(false));
 	}
 
-	private void addVideo() {
+	private void deleteBock() {
 		BookEntity entity = (BookEntity) this.getDefaultModelObject();
+		/*
+		 * Der Aufruf loescht den Wert nicht wirklich, er wird nur als geloescht
+		 * markiert. Auf der UebersichtPage muss die Anzeige demenpsrechen angepast
+		 * werden. Die Information ist in entity.getDeleted().
+		 */
 		try {
-			// Als Url muss der Endpunk von deinem Service eingetragen werden
-			URL url = new URL("http://localhost:8081/bibliothek/api/books");
+			URL url = new URL("http://localhost:8081/bibliothek/api/books" + "/" + entity.getId());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
-			conn.setRequestMethod("PUT");
+			conn.setRequestMethod("DELETE");
 			conn.setRequestProperty("Content-Type", "application/json");
 
 			ObjectMapper mapper = new ObjectMapper();
@@ -69,13 +73,6 @@ public class AendernPage extends WebPage {
 			if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
 				throw new WicketRuntimeException("Failed : HTTP error code: " + conn.getResponseCode());
 			}
-
-//            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//            String output;
-//            System.out.println("Output from Server....\n");
-//            while ((output = br.readLine()) != null) {
-//                System.out.println(output);
-//            }
 			conn.disconnect();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -83,5 +80,4 @@ public class AendernPage extends WebPage {
 			e.printStackTrace();
 		}
 	}
-
 }
