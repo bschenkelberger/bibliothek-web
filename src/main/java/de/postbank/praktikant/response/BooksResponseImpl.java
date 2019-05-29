@@ -11,7 +11,13 @@ public class BooksResponseImpl extends BaseResponse implements BooksResponse {
 
 	@Override
 	public List<BookEntity> getBooks() {
-		return books;
+		List<BookEntity> result = new ArrayList<>();
+		for (BookEntity bookEntity : books) {
+			if(bookEntity.getDeleted() == Boolean.FALSE) {
+				result.add(bookEntity);
+			}
+		}
+		return result;
 	}
 
 }

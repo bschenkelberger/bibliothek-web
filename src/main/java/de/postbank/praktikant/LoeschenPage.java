@@ -53,8 +53,8 @@ public class LoeschenPage extends WebPage {
 		BookEntity entity = (BookEntity) this.getDefaultModelObject();
 		/*
 		 * Der Aufruf loescht den Wert nicht wirklich, er wird nur als geloescht
-		 * markiert. Auf der UebersichtPage muss die Anzeige demenpsrechen angepast
-		 * werden. Die Information ist in entity.getDeleted().
+		 * markiert. Ich habe das in der BooksResponseImpl in der Methode getBooks
+		 * geloest. Die Information ist in entity.getDeleted().
 		 */
 		try {
 			URL url = new URL("http://localhost:8081/bibliothek/api/books" + "/" + entity.getId());
