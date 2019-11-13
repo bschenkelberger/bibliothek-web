@@ -24,7 +24,7 @@ public class BooksModel extends LoadableDetachableModel<BooksResponse> {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
 
-			if (conn.getResponseCode() != 200) {
+			if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
 				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 			}
 			ObjectMapper objectMapper = new ObjectMapper();
